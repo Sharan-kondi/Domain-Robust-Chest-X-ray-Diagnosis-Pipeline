@@ -6,7 +6,7 @@
     <title>Lumen CXR — Domain-Robust Chest X-ray Diagnostics</title>
     <meta name="description" content="A clinical storytelling portal and diagnostic workbench for domain-robust chest X-ray analysis.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=SF+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=SF+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <style>
         /* ─── Design System: Minimalist Monochrome (Apple/Editorial) ─── */
@@ -757,7 +757,7 @@
             <div class="story-step">
                 <span class="story-num">Part III</span>
                 <h3>Quantifying the Unknown</h3>
-                <p>Medical AI must not overconfidently guess. Lumen CXR implements **Monte Carlo (MC) Dropout**. During inference, the system runs 20 parallel passes through the model with active dropout. By measuring the variance (predictive entropy) across these passes, we quantify the model's confidence. If the case falls below the confidence threshold, the pipeline automatically routes the case for human radiologist review.</p>
+                <p>Medical AI must not overconfidently guess. Lumen CXR implements **Monte Carlo (MC) Dropout**. During inference, the system runs 20 parallel passes through the model with active dropout. By measuring the variance (predictive entropy) across these passes, we quantify the model's confidence. If the case falls below the confidence threshold, the pipeline automatically routes the case for human review.</p>
                 <div class="medical-insight">
                     <h4>Clinical Safety Net</h4>
                     Active case routing flags out-of-distribution patterns (such as surgical artifacts or foreign objects) that the model cannot safely identify, keeping the diagnosis process secure.
@@ -943,7 +943,7 @@
 
     <!-- ═══ Footer ═══ -->
     <footer class="footer">
-        <div class="footer-research-only">For Clinical Research Purposes Only</div>
+        <div class="footer-disclaimer">For Clinical Research Purposes Only</div>
         <p>Lumen CXR — Domain-Robust Diagnostics Platform</p>
         <p style="margin-top: 6px; opacity:0.65;">An explainable, robust deep-learning framework trained on NIH & Open-I dataset repositories.</p>
     </footer>
@@ -987,7 +987,7 @@
 
         function processUploadedFile(file) {
             if (!file.type.startsWith('image/') && !file.name.endsWith('.dcm')) {
-                alert('Invalid file type. Please upload a standard image or DICOM format.');
+                alert('Invalid file type. Please upload a standard image or JSON file.');
                 return;
             }
             selectedFile = file;

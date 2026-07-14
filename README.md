@@ -6,6 +6,14 @@ Lumen CXR is an explainable deep learning pipeline and editorial diagnostic dash
 
 ---
 
+## About
+
+Medical imaging models often fail when deployed in new clinical settings because different hospitals use contrasting radiography machines and processing filters. This issue is known as **covariate shift**. 
+
+**Lumen CXR** resolves this problem by training a domain-robust model using Correlation Alignment (CORAL) to ignore scanner-specific features. It integrates **Monte Carlo Dropout** to measure prediction confidence, automatically flagging high-uncertainty cases for human review, and maps model focus regions using **Grad-CAM** activation maps to establish clinical trust.
+
+---
+
 ## Key Features
 
 1. **Domain Generalization**: Uses **Correlation Alignment (CORAL)** to minimize covariate shifts between scanner vendors (GE, Siemens, Philips) and hospital sites.
@@ -19,37 +27,18 @@ Lumen CXR is an explainable deep learning pipeline and editorial diagnostic dash
 ## System Architecture
 
 ```mermaid
-flowchain
-    direction LR
-```
-
-```mermaid
 graph TD
-    Input[Chest X-ray Image] --> Preprocess[Resize 224x224 & Normalize]
-    Preprocess --> Model{MultiTaskChestXray}
+    Input[Chest X-ray Image] --> Model[Domain-Aligned Model]
     
-    subgraph Inference & Safety Routing
-        Model --> MCDropout[20x Monte Carlo Dropout Passes]
-        MCDropout --> Average[Mean Pathology Probabilities]
-        MCDropout --> Entropy[Calculate Predictive Entropy]
-        
-        Entropy --> Check{Entropy > Safety Threshold?}
-        Check -- Yes --> Route[Route to Diagnostic Radiologist]
-        Check -- No --> Output[Approve Automated Prediction]
-    end
+    Model --> Probabilities[Pathology Probabilities]
+    Model --> GradCAM[Grad-CAM Activation Overlay]
+    Model --> Uncertainty[Predictive Entropy Check]
     
-    subgraph Explainability & Validation
-        Model --> GradCAM[Grad-CAM Attention Mapping]
-        GradCAM --> Overlay[Superimposed Activation Overlay]
-        
-        Preprocess --> Drift[Covariate Shift Monitor]
-        Drift --> DriftScore[Compare Mean & SD Stats]
-    end
+    Uncertainty -- High Uncertainty --> Review[Route for Radiologist Review]
+    Uncertainty -- Confident --> Dashboard[Lumen CXR Dashboard]
     
-    Route --> Dashboard[Lumen CXR Dashboard View]
-    Output --> Dashboard
-    Overlay --> Dashboard
-    DriftScore --> Dashboard
+    Probabilities --> Dashboard
+    GradCAM --> Dashboard
 ```
 
 ---
@@ -66,7 +55,7 @@ graph TD
 
 1. Clone the repository and navigate to the project directory:
    ```bash
-   git clone https://github.com/your-profile/Domain-Robust-Chest-X-ray-Diagnosis-Pipeline.git
+   git clone https://github.com/Sharan-kondi/Domain-Robust-Chest-X-ray-Diagnosis-Pipeline.git
    cd Domain-Robust-Chest-X-ray-Diagnosis-Pipeline
    ```
 
@@ -96,9 +85,3 @@ docker compose up --build
 ```
 
 The web service will be hosted on port `8000`.
-
----
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
