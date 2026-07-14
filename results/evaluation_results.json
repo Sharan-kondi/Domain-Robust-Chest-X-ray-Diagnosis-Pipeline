@@ -1,0 +1,14 @@
+{
+  "macro_auc": 0.5656600438919033,
+  "per_class_auc": {
+    "Atelectasis": 0.49039317979386693,
+    "Cardiomegaly": 0.5917857142857142,
+    "Consolidation": 0.6971201588877856,
+    "Effusion": 0.7197784881365088,
+    "Pneumonia": 0.41620689655172416,
+    "Pneumothorax": 0.7795329670329669,
+    "Nodule/Mass": 0.46852927326950244,
+    "No Finding": 0.36193367317715797
+  },
+  "n_samples": 300
+}

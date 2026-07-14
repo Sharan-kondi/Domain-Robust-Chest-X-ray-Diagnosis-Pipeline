@@ -1,0 +1,18 @@
+# ──────────────────────────────────────────────────────────────
+# Domain Generalization (CORAL) configuration
+# ──────────────────────────────────────────────────────────────
+
+# Inherits all settings from finetune.yaml, overrides below
+base_config: "finetune.yaml"
+
+# CORAL-specific
+coral_lambda: 1.0        # Weight of CORAL loss relative to task loss
+coral_features_layer: "avgpool"  # Layer to extract features for alignment
+
+# Training overrides for DG run
+epochs: 5
+learning_rate: 5.0e-5    # Lower LR for fine-tuning with CORAL
+batch_size: 32
+
+# Checkpoint naming
+experiment_name: "coral_aligned"

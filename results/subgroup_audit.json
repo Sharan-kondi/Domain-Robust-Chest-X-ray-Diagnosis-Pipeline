@@ -1,0 +1,90 @@
+{
+  "gender": {
+    "M": {
+      "per_class_auc": {
+        "Atelectasis": 0.5390101674641148,
+        "Cardiomegaly": 0.5652255287291784,
+        "Consolidation": 0.5142361612949848,
+        "Effusion": 0.48576527681005294,
+        "Pneumonia": 0.47338516746411485,
+        "Pneumothorax": 0.5128291847041847,
+        "Nodule/Mass": 0.47763671875,
+        "No Finding": 0.5297450028283236
+      },
+      "macro_auc": 0.5122291510056193,
+      "n_samples": 848
+    },
+    "F": {
+      "per_class_auc": {
+        "Atelectasis": 0.5627450980392157,
+        "Cardiomegaly": 0.40574052812858785,
+        "Consolidation": 0.5363455089277622,
+        "Effusion": 0.5096658381662524,
+        "Pneumonia": 0.5839524517087668,
+        "Pneumothorax": 0.46248085758039814,
+        "Nodule/Mass": 0.49869160690056213,
+        "No Finding": 0.578489475500345
+      },
+      "macro_auc": 0.5172639206189863,
+      "n_samples": 683
+    }
+  },
+  "age_group": {
+    "30-49": {
+      "per_class_auc": {
+        "Atelectasis": 0.5489855072463768,
+        "Cardiomegaly": 0.5777777777777777,
+        "Consolidation": 0.49902912621359224,
+        "Effusion": 0.5054522833723654,
+        "Pneumonia": 0.4435634328358209,
+        "Pneumothorax": 0.5516571811181787,
+        "Nodule/Mass": 0.5353994490358127,
+        "No Finding": 0.5668676908031458
+      },
+      "macro_auc": 0.5285915560503838,
+      "n_samples": 544
+    },
+    "50-69": {
+      "per_class_auc": {
+        "Atelectasis": 0.5158937920718025,
+        "Cardiomegaly": 0.42454825067281815,
+        "Consolidation": 0.5402899928690278,
+        "Effusion": 0.5083827529317341,
+        "Pneumonia": 0.658642972536349,
+        "Pneumothorax": 0.478843302026693,
+        "Nodule/Mass": 0.4881342062193126,
+        "No Finding": 0.5550888726564402
+      },
+      "macro_auc": 0.5212280177480222,
+      "n_samples": 629
+    },
+    "18-29": {
+      "per_class_auc": {
+        "Atelectasis": 0.6299574468085105,
+        "Cardiomegaly": 0.6341050254093733,
+        "Consolidation": 0.6258823529411764,
+        "Effusion": 0.44898550724637687,
+        "Pneumonia": 0.4617380025940337,
+        "Pneumothorax": 0.3994557823129251,
+        "Nodule/Mass": 0.3452718934265123,
+        "No Finding": 0.5073516009478096
+      },
+      "macro_auc": 0.5065934514608398,
+      "n_samples": 260
+    },
+    "70+": {
+      "per_class_auc": {
+        "Atelectasis": 0.5670289855072463,
+        "Cardiomegaly": 0.5036231884057971,
+        "Consolidation": 0.5,
+        "Effusion": 0.4464285714285714,
+        "Pneumonia": 0.09278350515463918,
+        "Pneumothorax": 0.5416666666666665,
+        "Nodule/Mass": 0.3964912280701754,
+        "No Finding": 0.542433110367893
+      },
+      "macro_auc": 0.44880690695012365,
+      "n_samples": 98
+    }
+  }
+}

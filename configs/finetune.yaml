@@ -1,0 +1,35 @@
+# ──────────────────────────────────────────────────────────────
+# Fine-tuning configuration (baseline, no domain generalization)
+# ──────────────────────────────────────────────────────────────
+
+backbone: resnet18
+pretrained: true      # ImageNet weights via timm
+num_classes: 8
+bbox_enabled: true    # Multi-task: classification + bbox regression
+
+# Training
+epochs: 5
+batch_size: 32
+learning_rate: 1.0e-4
+weight_decay: 1.0e-5
+scheduler: cosine
+warmup_epochs: 1
+
+# Loss weights (multi-task balancing)
+loss_weights:
+  classification: 1.0
+  bbox_regression: 0.5
+
+# Checkpointing
+checkpoint_dir: "./checkpoints"
+save_every_epoch: true
+monitor_metric: "val_auc"
+monitor_mode: "max"
+
+# Logging
+wandb_project: "chest-xray-domain-robust"
+wandb_enabled: false   # Set true when ready
+
+# Reproducibility
+seed: 42
+deterministic: true

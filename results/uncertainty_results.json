@@ -1,0 +1,8 @@
+{
+  "threshold": 4.943788528442383,
+  "routing_rate": 0.25,
+  "n_routed": 50,
+  "n_confident": 150,
+  "mean_entropy_routed": 5.026638984680176,
+  "mean_entropy_confident": 4.7898478507995605
+}

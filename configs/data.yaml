@@ -1,0 +1,45 @@
+# ──────────────────────────────────────────────────────────────
+# Data configuration
+# ──────────────────────────────────────────────────────────────
+
+image_size: 224
+num_workers: 0
+pin_memory: true
+cache_dir: "./cached_tensors"
+
+# Shared label taxonomy (8 classes)
+labels:
+  - Atelectasis
+  - Cardiomegaly
+  - Consolidation
+  - Effusion
+  - Pneumonia
+  - Pneumothorax
+  - Nodule/Mass
+  - No Finding
+
+# Dataset paths & roles
+datasets:
+  nih:
+    role: train
+    images_dir: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray"
+    metadata_csv: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray/images_005/Data_Entry_2017.csv"
+    bbox_csv: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray/images_005/BBox_List_2017.csv"
+    subsample: 10000
+
+  vindr:
+    role: unused
+    images_dir: "./data/vindr/images"
+    metadata_csv: "./data/vindr/annotations.csv"
+    subsample: 4000
+
+  openi:
+    role: train
+    images_dir: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray"
+    projections_csv: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray/indiana_projections.csv"
+    reports_csv: "C:/Users/Shara/OneDrive/Desktop/projects/data of chest xray/indiana_reports.csv"
+    subsample: null  # Never subsample test set
+
+# Train/val split (applied within each training site)
+val_fraction: 0.15
+random_seed: 42

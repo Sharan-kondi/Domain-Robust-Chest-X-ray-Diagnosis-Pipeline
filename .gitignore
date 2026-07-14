@@ -1,0 +1,47 @@
+# Data (too large for git)
+data/
+checkpoints/
+*.pt
+*.ckpt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Weights & Biases
+wandb/
+
+# Logs
+*.log
+logs/
+
+# Docker
+.dockerignore
+
+# Cached tensors
+cached_tensors/
