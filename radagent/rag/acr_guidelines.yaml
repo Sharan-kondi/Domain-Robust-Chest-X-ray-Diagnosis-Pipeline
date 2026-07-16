@@ -1,0 +1,37 @@
+# ACR Appropriateness Criteria Guidelines for Chest X-ray findings
+guidelines:
+  atelectasis:
+    acr_code: "ACR-AC-1"
+    section: "Acute Respiratory Illness (Atelectasis)"
+    recommendation: "Chest radiography is the initial imaging study. For persistent or lobar atelectasis without clear etiology, chest CT with contrast is recommended to exclude obstructing endobronchial lesions or foreign bodies."
+    citations: ["ACR Appropriateness Criteria® Acute Respiratory Illness, 2021"]
+  cardiomegaly:
+    acr_code: "ACR-AC-2"
+    section: "Chronic Chest Pain / Heart Failure (Cardiomegaly)"
+    recommendation: "Chest radiography is recommended as the initial imaging study. Echocardiography is indicated to evaluate ventricular function, chamber size, and valvular pathology when cardiomegaly is identified."
+    citations: ["ACR Appropriateness Criteria® Congestive Heart Failure, 2020"]
+  consolidation:
+    acr_code: "ACR-AC-3"
+    section: "Acute Respiratory Illness (Consolidation)"
+    recommendation: "Chest radiography is indicated. For patients with clinical deterioration or failure to clear consolidation after 4-6 weeks of therapy, follow-up chest radiography or chest CT with contrast is recommended to rule out underlying mass."
+    citations: ["ACR Appropriateness Criteria® Pneumonia in the Immunocompetent Host, 2019"]
+  effusion:
+    acr_code: "ACR-AC-4"
+    section: "Pleural effusion"
+    recommendation: "Chest radiography is recommended. In patients with unexplained pleural effusion or to guide drainage, chest ultrasound or chest CT with contrast is recommended."
+    citations: ["ACR Appropriateness Criteria® Pleural Effusion, 2022"]
+  pneumonia:
+    acr_code: "ACR-AC-5"
+    section: "Acute Respiratory Illness (Pneumonia)"
+    recommendation: "Chest radiography is the preferred initial imaging. CT of the chest without contrast is indicated for patients with high clinical suspicion of pneumonia and normal or indeterminate chest radiographs."
+    citations: ["ACR Appropriateness Criteria® Acute Respiratory Illness, 2021"]
+  pneumothorax:
+    acr_code: "ACR-AC-6"
+    section: "Acute Chest Pain (Pneumothorax)"
+    recommendation: "Chest radiography is recommended. For small, asymptomatic pneumothoraces, conservative management with follow-up radiography is appropriate. For larger or symptomatic pneumothoraces, thoracostomy or chest tube placement is indicated."
+    citations: ["ACR Appropriateness Criteria® Traumatic Chest Injury, 2021"]
+  nodule_mass:
+    acr_code: "ACR-AC-7"
+    section: "Solitary Pulmonary Nodule / Mass"
+    recommendation: "Chest radiography is indicated. Any newly identified pulmonary nodule or mass should be evaluated with chest CT without contrast (or with contrast if mediastinal invasion is suspected) and compared with historical imaging."
+    citations: ["ACR Appropriateness Criteria® Solitary Pulmonary Nodule, 2022"]

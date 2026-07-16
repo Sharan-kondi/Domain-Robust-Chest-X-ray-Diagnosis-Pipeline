@@ -1,0 +1,110 @@
+{
+  "metrics": {
+    "total_cases": 2,
+    "hallucination_rate": 0.0,
+    "omission_rate": 0.0,
+    "average_discrepancy_count": 0.0,
+    "revision_trigger_rate": 0.0,
+    "revision_correction_rate": 0.0,
+    "escalation_rate": 0.5
+  },
+  "runs": [
+    {
+      "site": "NIH",
+      "index": 1078,
+      "ground_truth": [],
+      "final_report": "FINDINGS:\n* Pneumothorax is present.\n* Findings are suggestive of consolidation.\n* Findings are suggestive of effusion.\n* No evidence of atelectasis, cardiomegaly, pneumonia, or nodule/mass is seen.\n\nIMPRESSION:\nThe chest X-ray demonstrates a pneumothorax, with findings also suggestive of consolidation and effusion, although the latter two are not definitive. Overall, the presence of a pneumothorax is the most confident finding, and clinical correlation is recommended to further evaluate and manage this condition.",
+      "verification": {
+        "hallucinations": [],
+        "omissions": [],
+        "discrepancy_count": 0
+      },
+      "escalated": true,
+      "trace_id": "ff5976be-3321-421b-a00f-ed1d7fda324c",
+      "steps": [
+        {
+          "node": "drafting",
+          "revision": 0,
+          "feedback_applied": false,
+          "output_draft": "FINDINGS:\n* Pneumothorax is present.\n* Findings are suggestive of consolidation.\n* Findings are suggestive of effusion.\n* No evidence of atelectasis, cardiomegaly, pneumonia, or nodule/mass is seen.\n\nIMPRESSION:\nThe chest X-ray demonstrates a pneumothorax, with findings also suggestive of consolidation and effusion, although the latter two are not definitive. Overall, the presence of a pneumothorax is the most confident finding, and clinical correlation is recommended to further evaluate and manage this condition."
+        },
+        {
+          "node": "verification",
+          "discrepancies": {
+            "hallucinations": [],
+            "omissions": [],
+            "discrepancy_count": 0
+          },
+          "discrepancy_count": 0,
+          "feedback_generated": null
+        },
+        {
+          "node": "grounding",
+          "grounded_recommendations": 3
+        },
+        {
+          "node": "bias_audit",
+          "bias_warning_triggered": false,
+          "subgroup": null
+        },
+        {
+          "node": "escalation_eval",
+          "escalated": true,
+          "reasons": [
+            "High classifier predictive uncertainty (exceeds safety routing threshold)"
+          ]
+        }
+      ]
+    },
+    {
+      "site": "Open-I",
+      "index": 4034,
+      "ground_truth": [
+        "Consolidation",
+        "Effusion",
+        "Pneumothorax",
+        "No Finding"
+      ],
+      "final_report": "FINDINGS:\n* No evidence of Atelectasis, Cardiomegaly, Consolidation, Pneumonia, or Nodule/Mass is seen.\n* Findings are suggestive of Effusion.\n* Findings are suspicious for Pneumothorax.\n\nIMPRESSION:\nThe chest X-ray does not demonstrate any definitive evidence of Atelectasis, Cardiomegaly, Consolidation, Pneumonia, or Nodule/Mass. However, there are findings suggestive of Effusion and suspicious for Pneumothorax, which would require further evaluation or correlation with clinical symptoms and other diagnostic tests for a definitive diagnosis.",
+      "verification": {
+        "hallucinations": [],
+        "omissions": [],
+        "discrepancy_count": 0
+      },
+      "escalated": false,
+      "trace_id": "314f8e9a-be82-4c6b-8b3f-9d0b3a6ba366",
+      "steps": [
+        {
+          "node": "drafting",
+          "revision": 0,
+          "feedback_applied": false,
+          "output_draft": "FINDINGS:\n* No evidence of Atelectasis, Cardiomegaly, Consolidation, Pneumonia, or Nodule/Mass is seen.\n* Findings are suggestive of Effusion.\n* Findings are suspicious for Pneumothorax.\n\nIMPRESSION:\nThe chest X-ray does not demonstrate any definitive evidence of Atelectasis, Cardiomegaly, Consolidation, Pneumonia, or Nodule/Mass. However, there are findings suggestive of Effusion and suspicious for Pneumothorax, which would require further evaluation or correlation with clinical symptoms and other diagnostic tests for a definitive diagnosis."
+        },
+        {
+          "node": "verification",
+          "discrepancies": {
+            "hallucinations": [],
+            "omissions": [],
+            "discrepancy_count": 0
+          },
+          "discrepancy_count": 0,
+          "feedback_generated": null
+        },
+        {
+          "node": "grounding",
+          "grounded_recommendations": 2
+        },
+        {
+          "node": "bias_audit",
+          "bias_warning_triggered": false,
+          "subgroup": null
+        },
+        {
+          "node": "escalation_eval",
+          "escalated": false,
+          "reasons": []
+        }
+      ]
+    }
+  ]
+}

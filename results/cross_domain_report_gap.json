@@ -1,0 +1,25 @@
+{
+  "nih_metrics": {
+    "total_cases": 1,
+    "hallucination_rate": 0.0,
+    "omission_rate": 0.0,
+    "average_discrepancy_count": 0.0,
+    "revision_trigger_rate": 0.0,
+    "revision_correction_rate": 0.0,
+    "escalation_rate": 1.0
+  },
+  "openi_metrics": {
+    "total_cases": 1,
+    "hallucination_rate": 0.0,
+    "omission_rate": 0.0,
+    "average_discrepancy_count": 0.0,
+    "revision_trigger_rate": 0.0,
+    "revision_correction_rate": 0.0,
+    "escalation_rate": 0.0
+  },
+  "discrepancy_difference": {
+    "hallucination_gap": 0.0,
+    "omission_gap": 0.0,
+    "escalation_gap": 1.0
+  }
+}

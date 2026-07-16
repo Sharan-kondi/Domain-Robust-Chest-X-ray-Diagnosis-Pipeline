@@ -39,3 +39,40 @@ class DriftReport(BaseModel):
     drift_score: float
     n_samples_analyzed: int
     details: Optional[Dict] = None
+
+
+class DiscrepancyItem(BaseModel):
+    """Represents a single clinical discrepancy claim."""
+    claim: Optional[str] = None
+    finding: Optional[str] = None
+    explanation: str
+
+
+class GroundingCitation(BaseModel):
+    """Citations mapping a pathology back to standard guidelines."""
+    acr_code: str
+    section: str
+    recommendation: str
+    citations: List[str]
+    pathology: str
+
+
+class VerificationResult(BaseModel):
+    """Result of claims matching and spatial verification."""
+    hallucinations: List[DiscrepancyItem]
+    omissions: List[DiscrepancyItem]
+    discrepancy_count: int
+    error: Optional[str] = None
+
+
+class ReportResponse(BaseModel):
+    """Unified radiology AI prediction and agent generated report response."""
+    prediction: PredictionResponse
+    report: str
+    verification: VerificationResult
+    grounding: List[GroundingCitation]
+    escalated: bool
+    trace_id: str
+    steps: List[Dict] = []
+    bias: Optional[Dict] = None
+

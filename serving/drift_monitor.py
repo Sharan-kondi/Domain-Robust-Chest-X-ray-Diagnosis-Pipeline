@@ -52,12 +52,26 @@ class DriftMonitor:
         Returns:
             Dict with drift_detected, drift_score, and details.
         """
-        if len(self.incoming_means) < 10:
+        if not self.incoming_means:
             return {
                 "drift_detected": False,
                 "drift_score": 0.0,
+                "n_samples_analyzed": 0,
+                "message": "Awaiting inputs",
+            }
+
+        # Calculate drift for the latest single scan immediately
+        latest_mean = self.incoming_means[-1]
+        latest_std = self.incoming_stds[-1]
+        latest_drift = (abs(latest_mean - self.reference_stats["mean"]) + abs(latest_std - self.reference_stats["std"])) / 2
+
+        if len(self.incoming_means) < 10:
+            return {
+                "drift_detected": latest_drift > self.threshold,
+                "drift_score": float(latest_drift),
                 "n_samples_analyzed": len(self.incoming_means),
-                "message": "Need at least 10 samples for drift detection",
+                "message": "Awaiting 10 samples for running average, showing single-scan stats",
+                "single_sample_drift": float(latest_drift),
             }
 
         current_mean = np.mean(self.incoming_means[-100:])
@@ -68,13 +82,14 @@ class DriftMonitor:
         drift_score = (mean_drift + std_drift) / 2
 
         return {
-            "drift_detected": drift_score > self.threshold,
+            "drift_detected": drift_score > self.threshold or latest_drift > self.threshold,
             "drift_score": float(drift_score),
             "n_samples_analyzed": len(self.incoming_means),
             "current_mean": float(current_mean),
             "current_std": float(current_std),
             "reference_mean": self.reference_stats["mean"],
             "reference_std": self.reference_stats["std"],
+            "single_sample_drift": float(latest_drift),
         }
 
     def save_log(self, path: str = "logs/drift_log.json") -> None:

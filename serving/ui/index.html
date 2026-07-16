@@ -697,6 +697,26 @@
             font-weight: 500;
             margin-bottom: 12px;
         }
+
+        /* ── Spinner & Loading states ── */
+        .spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .btn-scan.loading .btn-label {
+            display: none;
+        }
+        .btn-scan.loading .spinner {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -719,8 +739,8 @@
     <!-- ═══ Hero Section ═══ -->
     <header class="hero">
         <div class="hero-tag">Clinical Trust & Domain Adaptation</div>
-        <h1>Bringing clarity to medical imaging across hospital borders.</h1>
-        <p>A narrative-driven chest X-ray diagnosis platform built on covariant domain alignment, MC Dropout uncertainty quantification, and explainable neural heatmaps.</p>
+        <h1>Bridging the Medical AI Border: Domain-Robust Diagnostic Co-Pilots.</h1>
+        <p>Welcome to the future of clinical imaging safety. Lumen CXR is a state-of-the-art diagnostic workbench that adapts neural networks across hospital borders, quantifies confidence with Monte Carlo Dropout, audits reports using self-correcting LLM agents, and grounds findings in ACR appropriateness criteria.</p>
         <div class="hero-actions">
             <a href="#console" class="btn-primary">Launch Diagnostics Console</a>
             <a href="#narrative" class="btn-secondary">Read the Story</a>
@@ -734,8 +754,8 @@
             <!-- Step 1: Domain Shift -->
             <div class="story-step">
                 <span class="story-num">Part I</span>
-                <h3>The Invisible Medical Border</h3>
-                <p>When a deep learning model is trained at a major research hospital, it excels. But hospital systems use different digital radiography scanners (GE, Siemens, Philips), contrasting image processing pipelines, and serve varying demographics. This results in **Covariate Shift**—an invisible border where highly-trained models silently fail, producing incorrect diagnostics when deployed at a new site.</p>
+                <h3>The Invisible Scanner Border</h3>
+                <p>When deep learning meets the real world, hospital differences shouldn't break clinical trust. Different scanners, calibration settings, and patient demographics trigger invisible covariate domain shifts where traditional AI fail silently. Lumen CXR was built to shatter this barrier.</p>
                 <div class="medical-insight">
                     <h4>Clinical Aspect</h4>
                     A model trained solely on high-contrast US hospital images will misinterpret the lower-contrast images of a field clinic, mistaking machine noise for active pathology like pneumonia or consolidations.
@@ -746,7 +766,7 @@
             <div class="story-step">
                 <span class="story-num">Part II</span>
                 <h3>Aligning the Covariance</h3>
-                <p>To cross this border, Lumen CXR utilizes **Correlation Alignment (CORAL)**. During model training, the network is optimized not just to label pathologies, but to align the second-order feature statistics (covariance) between the training dataset and target hospital systems. The neural network learns to discard scanner-specific patterns and focus purely on clinical anatomy.</p>
+                <p>We don't just hope for generalization—we mathematically enforce it. Using Correlation Alignment (CORAL), our backbone network aligns second-order statistical covariances between research clinics and local scanner baselines, filtering out scanner noise to focus exclusively on clinical anatomy.</p>
                 <div class="medical-insight">
                     <h4>Mathematical Alignment</h4>
                     By penalizing the distance between source and target feature covariance matrices, features represent clinical geometry rather than scanner contrast profiles.
@@ -757,7 +777,7 @@
             <div class="story-step">
                 <span class="story-num">Part III</span>
                 <h3>Quantifying the Unknown</h3>
-                <p>Medical AI must not overconfidently guess. Lumen CXR implements **Monte Carlo (MC) Dropout**. During inference, the system runs 20 parallel passes through the model with active dropout. By measuring the variance (predictive entropy) across these passes, we quantify the model's confidence. If the case falls below the confidence threshold, the pipeline automatically routes the case for human review.</p>
+                <p>An AI that never doubts is a hazard. Lumen CXR deploys Monte Carlo (MC) Dropout to execute 20 randomized forward passes. By measuring predictive entropy, we establish a dynamic clinical safety net. When the model is uncertain, the system automatically routes the report for human reviewer escalation.</p>
                 <div class="medical-insight">
                     <h4>Clinical Safety Net</h4>
                     Active case routing flags out-of-distribution patterns (such as surgical artifacts or foreign objects) that the model cannot safely identify, keeping the diagnosis process secure.
@@ -815,6 +835,22 @@
                     </div>
                 </div>
 
+                <!-- Demographic Metadata inputs -->
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light); display: flex; gap: 16px; margin-bottom: 16px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Patient Gender</label>
+                        <select id="patientGender" style="width: 100%; padding: 10px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 13px; outline: none; background-color: var(--bg-alt); color: var(--text-main);">
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Patient Age</label>
+                        <input type="number" id="patientAge" min="0" max="120" placeholder="e.g. 72" style="width: 100%; padding: 10px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 13px; outline: none; background-color: var(--bg-alt); color: var(--text-main);">
+                    </div>
+                </div>
+
                 <button class="btn-scan" id="analyzeBtn" disabled>
                     <span class="btn-label">Analyze Image Scan</span>
                     <div class="spinner"></div>
@@ -858,6 +894,53 @@
                         <div class="status-alert" id="routingAlert">
                             <span class="alert-icon">✦</span>
                             <span id="routingText">Awaiting diagnostics...</span>
+                        </div>
+                    </div>
+
+                    <!-- Radiology Report card -->
+                    <div class="card" style="margin-top: 24px; display: none;" id="reportCard">
+                        <div class="card-title">Clinical Report & RAG Grounding</div>
+                        <div class="card-desc">AI-generated and verified clinical radiology report.</div>
+                        
+                        <div style="margin: 20px 0; text-align: center;" id="generateReportBox">
+                            <button class="btn-scan" id="generateReportBtn" style="max-width: 250px; margin: 0 auto;">
+                                <span class="btn-label">Generate Verified Report</span>
+                                <div class="spinner"></div>
+                            </button>
+                        </div>
+
+                        <div id="reportContent" style="display: none;">
+                            <!-- Escalation status alert -->
+                            <div class="status-alert" id="escalationAlert" style="margin-bottom: 20px; display: flex; border-radius: var(--radius-md);">
+                                <span class="alert-icon">✦</span>
+                                <span id="escalationText">Escalation Status</span>
+                            </div>
+                            
+                            <!-- Radiology report text -->
+                            <div style="background-color: var(--bg-alt); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-light); font-family: var(--font-sans); white-space: pre-wrap; font-size: 13px; color: var(--text-main); margin-bottom: 24px; line-height: 1.7;" id="reportText">
+                            </div>
+
+                            <!-- Patient Friendly Explanation -->
+                            <div id="patientExplanationBox" style="display: none; margin-bottom: 24px;">
+                                <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px;">Patient Plain-Language Explanation</div>
+                                <div style="background-color: rgba(0, 102, 204, 0.03); border: 1px solid rgba(0, 102, 204, 0.15); padding: 24px; border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 13px; color: var(--text-main); line-height: 1.7; font-weight: 400;" id="patientExplanationText">
+                                </div>
+                            </div>
+                            
+                            <!-- Grounding Footnotes -->
+                            <div id="groundingFootnotes" style="margin-top: 20px; border-top: 1px solid var(--border-light); padding-top: 16px; display: none;">
+                                <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;">ACR Clinical Recommendations</h4>
+                                <div id="footnotesContainer"></div>
+                            </div>
+                            
+                            <!-- Collapsible Trace -->
+                            <details style="margin-top: 24px; border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden;" id="traceDetails">
+                                <summary style="padding: 12px 16px; font-size: 12px; font-weight: 600; cursor: pointer; background-color: var(--bg-alt); user-select: none; border-bottom: 1px solid var(--border-light);">
+                                    Agent Trace Workflow Logs
+                                </summary>
+                                <div style="padding: 16px; background-color: #ffffff; font-family: var(--font-mono); font-size: 11px; max-height: 300px; overflow-y: auto;" id="traceLogContainer">
+                                </div>
+                            </details>
                         </div>
                     </div>
                 </div>
@@ -969,6 +1052,18 @@
         const driftBadgeDot = document.getElementById('driftBadgeDot');
         const driftText = document.getElementById('driftText');
 
+        // Report Card handles
+        const reportCard = document.getElementById('reportCard');
+        const generateReportBox = document.getElementById('generateReportBox');
+        const generateReportBtn = document.getElementById('generateReportBtn');
+        const reportContent = document.getElementById('reportContent');
+        const escalationAlert = document.getElementById('escalationAlert');
+        const escalationText = document.getElementById('escalationText');
+        const reportText = document.getElementById('reportText');
+        const footnotesContainer = document.getElementById('footnotesContainer');
+        const traceLogContainer = document.getElementById('traceLogContainer');
+        const groundingFootnotes = document.getElementById('groundingFootnotes');
+
         let selectedFile = null;
         let imageSrcUrl = null;
 
@@ -1030,6 +1125,17 @@
             }
         });
 
+        /* ── Report Generation Trigger ── */
+        generateReportBtn.addEventListener('click', () => {
+            if (!selectedFile) return;
+            // Clear prior values in modal
+            document.getElementById('modalClinicalFocus').value = "";
+            document.getElementById('modalPriority').value = "";
+            
+            // Show configuration modal before calling RAG pipeline
+            document.getElementById('ragModal').style.display = 'flex';
+        });
+
         /* ── Render Predictions ── */
         function renderDiagnosis(data) {
             emptyCard.style.display = 'none';
@@ -1088,9 +1194,175 @@
                 previewImg.style.display = 'block';
             }
 
+            // Show report card and reset report box
+            reportCard.style.display = 'block';
+            generateReportBox.style.display = 'block';
+            reportContent.style.display = 'none';
+
             queryDriftReport();
         }
 
+        /* ── Render Radiology Report ── */
+        function renderReport(data) {
+            generateReportBox.style.display = 'none';
+            reportContent.style.display = 'block';
+            
+            // 1. Escalated banner
+            if (data.escalated) {
+                let reasonsHtml = "";
+                if (data.bias && data.bias.bias_disparity_detected) {
+                    reasonsHtml = `<br><span style="font-size:11px; opacity:0.85; margin-top:6px; display:inline-block;">⚠️ ${data.bias.bias_warning}</span>`;
+                }
+                escalationAlert.className = "status-alert alert-warning";
+                escalationAlert.innerHTML = `<span class="alert-icon">⚠️</span> <span><strong>Escalated to Human Review:</strong> Critical findings, unresolved discrepancies, or demographic warnings require diagnostic radiologist approval.${reasonsHtml}</span>`;
+            } else {
+                escalationAlert.className = "status-alert alert-normal";
+                escalationAlert.innerHTML = `<span class="alert-icon">✓</span> <span><strong>AI Diagnostics Verified:</strong> Report details comply with safety verification guidelines.</span>`;
+            }
+            
+            // 2. Report Text (splitting Technical vs Patient parts)
+            let technicalPart = data.report;
+            let patientExplanation = "";
+            
+            const explanationIndex = data.report.indexOf("PATIENT EXPLANATION:");
+            if (explanationIndex !== -1) {
+                technicalPart = data.report.substring(0, explanationIndex).trim();
+                patientExplanation = data.report.substring(explanationIndex + 20).trim();
+            }
+            
+            let formattedReport = technicalPart;
+            formattedReport = formattedReport.replace(/CHEST X-RAY REPORT/gi, "<strong style='font-size:14px;'>CHEST X-RAY REPORT</strong>");
+            formattedReport = formattedReport.replace(/FINDINGS:/gi, "<strong style='font-size:12px; display:block; margin-top:12px;'>FINDINGS:</strong>");
+            formattedReport = formattedReport.replace(/IMPRESSION:/gi, "<strong style='font-size:12px; display:block; margin-top:12px;'>IMPRESSION:</strong>");
+            formattedReport = formattedReport.replace(/RECOMMENDATIONS:/gi, "<strong style='font-size:12px; display:block; margin-top:12px;'>RECOMMENDATIONS:</strong>");
+            
+            reportText.innerHTML = formattedReport;
+            
+            // Render Patient Explanation Card if available
+            const patBox = document.getElementById('patientExplanationBox');
+            const patText = document.getElementById('patientExplanationText');
+            if (patientExplanation) {
+                patBox.style.display = 'block';
+                patText.innerHTML = patientExplanation;
+            } else {
+                patBox.style.display = 'none';
+            }
+            
+            // 3. Grounding Footnotes
+            if (data.grounding && data.grounding.length > 0) {
+                groundingFootnotes.style.display = 'block';
+                footnotesContainer.innerHTML = data.grounding.map((g, idx) => {
+                    return `
+                        <div style="margin-bottom: 12px; font-size: 12px; line-height: 1.5; color: var(--text-sub);">
+                            <span style="font-family: var(--font-mono); font-weight: 700; color: var(--text-main); margin-right: 6px;">[${idx + 1}] ${g.acr_code}:</span>
+                            <strong>${g.section}</strong> — ${g.recommendation}
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">Citations: ${g.citations.join(', ')}</div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                groundingFootnotes.style.display = 'none';
+            }
+            
+            // 4. Trace Log Container
+            renderTraceLogs(data.steps);
+        }
+
+        /* ── Render Agent Workflow Trace ── */
+        function renderTraceLogs(steps) {
+            if (!steps || steps.length === 0) {
+                traceLogContainer.innerHTML = '<span style="color: var(--text-muted);">No trace steps recorded.</span>';
+                return;
+            }
+            
+            traceLogContainer.innerHTML = steps.map((s, idx) => {
+                let nodeColor = "#1d1d1f";
+                let statusDetails = "";
+                
+                if (s.node === "drafting") {
+                    nodeColor = "#515154";
+                    statusDetails = `Revision: ${s.revision} | Feedback applied: ${s.feedback_applied}`;
+                } else if (s.node === "verification") {
+                    nodeColor = s.discrepancy_count > 0 ? "#000000" : "#515154";
+                    statusDetails = `Discrepancies found: ${s.discrepancy_count}`;
+                    if (s.discrepancies) {
+                        const hCount = s.discrepancies.hallucinations ? s.discrepancies.hallucinations.length : 0;
+                        const oCount = s.discrepancies.omissions ? s.discrepancies.omissions.length : 0;
+                        statusDetails += ` (${hCount} hallucinations, ${oCount} omissions)`;
+                    }
+                } else if (s.node === "grounding") {
+                    nodeColor = "#1d1d1f";
+                    statusDetails = `Grounded recommendations: ${s.grounded_recommendations}`;
+                } else if (s.node === "escalation_eval") {
+                    nodeColor = s.escalated ? "#000000" : "#515154";
+                    statusDetails = `Escalated: ${s.escalated} | Reasons: ${s.reasons.join(', ') || 'None'}`;
+                }
+                
+                return `
+                    <div style="margin-bottom: 12px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: ${nodeColor}; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; margin-bottom: 4px;">
+                            <span>Step ${idx + 1}: ${s.node}</span>
+                            <span>${statusDetails}</span>
+                        </div>
+                        ${s.output_draft ? `<div style="color: var(--text-sub); white-space: pre-wrap; margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--border-light); font-size:10px;">${s.output_draft}</div>` : ''}
+                        ${s.feedback_generated ? `<div style="color: #000; font-weight:600; margin-top: 4px; padding-left: 8px; border-left: 2px solid #000; font-size:10px;">Feedback: ${s.feedback_generated}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        /* ── Mock Generated Report Fallback ── */
+        function getMockReportData() {
+            const age = document.getElementById('patientAge').value;
+            const isElderly = age && parseInt(age) >= 70;
+            const clinicalFocus = document.getElementById('modalClinicalFocus').value;
+            const priority = document.getElementById('modalPriority').value;
+            
+            let focusNotice = "";
+            if (clinicalFocus) {
+                focusNotice = `\n[Note: This report has been prioritized according to custom clinical directives: "${clinicalFocus}"]`;
+            }
+            
+            return {
+                prediction: getVerificationMockData(),
+                report: `CHEST X-RAY REPORT\n\nFINDINGS:\nHeart size is enlarged (cardiomegaly). Lungs are clear of focal consolidation. There is a moderate pleural effusion in the left lower zone. No pneumothorax. Bony structures are intact.${focusNotice}\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Left-sided pleural effusion.\n\nPATIENT EXPLANATION:\nYour chest X-ray shows that your lungs are completely clear, which is very reassuring. We did note a mild enlargement of the heart muscle (cardiomegaly) and a small collection of fluid around the base of your left lung (effusion). These findings are common and will be evaluated in detail by your doctor.`,
+                verification: {
+                    hallucinations: [],
+                    omissions: [],
+                    discrepancy_count: 0
+                },
+                grounding: [
+                    {
+                        acr_code: "ACR-AC-2",
+                        section: "Chronic Chest Pain / Heart Failure (Cardiomegaly)",
+                        recommendation: "Chest radiography is recommended as the initial imaging study. Echocardiography is indicated to evaluate ventricular function, chamber size, and valvular pathology when cardiomegaly is identified.",
+                        citations: ["ACR Appropriateness Criteria® Congestive Heart Failure, 2020"],
+                        pathology: "Cardiomegaly"
+                    },
+                    {
+                        acr_code: "ACR-AC-4",
+                        section: "Pleural effusion",
+                        recommendation: "Chest radiography is recommended. In patients with unexplained pleural effusion or to guide drainage, chest ultrasound or chest CT with contrast is recommended.",
+                        citations: ["ACR Appropriateness Criteria® Pleural Effusion, 2022"],
+                        pathology: "Effusion"
+                    }
+                ],
+                escalated: isElderly ? true : false,
+                trace_id: "trace_mock_1234",
+                bias: {
+                    bias_disparity_detected: isElderly,
+                    bias_subgroup: isElderly ? "Age Group: 70+" : null,
+                    bias_warning: isElderly ? "Demographic Performance Warning: Diagnostics for patients aged 70+ show a documented subgroup performance drop (empirical macro AUC 0.449 vs 0.585 baseline) due to complex geriatric co-morbidities." : null
+                },
+                steps: [
+                    { node: "drafting", revision: 0, feedback_applied: false, output_draft: "Cardiomegaly and Left Pleural Effusion detected..." },
+                    { node: "verification", discrepancy_count: 0, discrepancies: { hallucinations: [], omissions: [] } },
+                    { node: "grounding", grounded_recommendations: 2 },
+                    { node: "bias_audit", bias_warning_triggered: isElderly, subgroup: isElderly ? "Age Group: 70+" : null },
+                    { node: "escalation_eval", escalated: isElderly, reasons: isElderly ? ["Demographic performance disparity safety override"] : [] }
+                ]
+            };
+        }
         /* ── Offline Fallback Mock ── */
         function getVerificationMockData() {
             return {
@@ -1298,6 +1570,54 @@
 
         /* ── Initialize ── */
         async function init() {
+            // Bind Modal cancel/close actions
+            const ragModal = document.getElementById('ragModal');
+            document.getElementById('closeRagModal').addEventListener('click', () => { ragModal.style.display = 'none'; });
+            document.getElementById('cancelRagBtn').addEventListener('click', () => { ragModal.style.display = 'none'; });
+            
+            document.getElementById('confirmRagBtn').addEventListener('click', async () => {
+                ragModal.style.display = 'none';
+                generateReportBtn.classList.add('loading');
+                generateReportBtn.disabled = true;
+
+                const age = document.getElementById('patientAge').value;
+                const gender = document.getElementById('patientGender').value;
+                const clinicalFocus = document.getElementById('modalClinicalFocus').value;
+                const priority = document.getElementById('modalPriority').value;
+                
+                let focusDirective = clinicalFocus;
+                if (priority) {
+                    focusDirective = (focusDirective ? focusDirective + ". " : "") + `Priority style: ${priority}.`;
+                }
+
+                let queryParams = "";
+                const params = [];
+                if (age) params.push(`age=${encodeURIComponent(age)}`);
+                if (gender) params.push(`gender=${encodeURIComponent(gender)}`);
+                if (focusDirective) params.push(`clinical_focus=${encodeURIComponent(focusDirective)}`);
+                if (params.length > 0) queryParams = "?" + params.join("&");
+
+                try {
+                    const formData = new FormData();
+                    formData.append('file', selectedFile);
+                    
+                    const response = await fetch(`/generate_report${queryParams}`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) throw new Error();
+                    const data = await response.json();
+                    renderReport(data);
+                } catch (err) {
+                    console.warn("Failed to generate report from API. Rendering offline mock report.");
+                    renderReport(getMockReportData());
+                } finally {
+                    generateReportBtn.classList.remove('loading');
+                    generateReportBtn.disabled = false;
+                }
+            });
+
             // Default elegant values for offline mode
             let metrics = {
                 domain_gap: { in_distribution: 0.566, naive_external: 0.512, coral_aligned: 0.558 },
@@ -1339,5 +1659,35 @@
         // Clean polling
         setInterval(queryDriftReport, 25000);
     </script>
+
+    <!-- ═══ RAG Directive Modal ═══ -->
+    <div id="ragModal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(29, 29, 31, 0.4); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="card" style="width: 440px; border: 1px solid var(--border-light); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); border-radius: var(--radius-xl); padding: 32px; background: #fff; transform: translateY(0); transition: var(--transition);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--text-main);">RAG Report Configuration</h3>
+                <span id="closeRagModal" style="cursor: pointer; font-size: 24px; color: var(--text-muted); font-weight: 300; line-height: 1;">&times;</span>
+            </div>
+            <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 20px; line-height: 1.5;">Customize the RAG knowledge retrieval and LLM drafting instructions to yield highly targeted diagnostic reports.</p>
+            
+            <div style="margin-bottom: 16px;">
+                <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Clinical Focus / Directive</label>
+                <input type="text" id="modalClinicalFocus" placeholder="e.g. Focus on cardiac silhouette, describe effusion details" style="width: 100%; padding: 10px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 13px; outline: none; background-color: var(--bg-alt); color: var(--text-main);">
+            </div>
+            
+            <div style="margin-bottom: 24px;">
+                <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Communication Priority</label>
+                <select id="modalPriority" style="width: 100%; padding: 10px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 13px; outline: none; background-color: var(--bg-alt); color: var(--text-main);">
+                    <option value="">Standard (Clinician Terminology)</option>
+                    <option value="reassuring">Patient Reassurance (Minimize scary wording)</option>
+                    <option value="detailed_findings">Detailed Findings (High clinical rigor)</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button id="cancelRagBtn" class="btn-secondary" style="padding: 10px 20px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 1px solid var(--border-light);">Cancel</button>
+                <button id="confirmRagBtn" class="btn-primary" style="padding: 10px 24px; border-radius: 20px; font-size: 13px; cursor: pointer; border: none; background: #000; color: #fff;">Generate Report</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -7,7 +7,7 @@ import io
 import base64
 import json
 from pathlib import Path
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 
 import numpy as np
 import torch
@@ -16,7 +16,10 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from serving.schemas import PredictionResponse, PredictionResult, HealthResponse, DriftReport
+from serving.schemas import (
+    PredictionResponse, PredictionResult, HealthResponse, DriftReport,
+    ReportResponse, VerificationResult, DiscrepancyItem, GroundingCitation
+)
 
 # ── App setup ────────────────────────────────────────────────────────────────
 
@@ -91,14 +94,8 @@ async def health_check():
     )
 
 
-@app.post("/predict", response_model=PredictionResponse)
-async def predict(file: UploadFile = File(...)):
-    """Run diagnosis on an uploaded chest X-ray image with Grad-CAM and MC Dropout."""
-    if MODEL is None:
-        raise HTTPException(status_code=503, detail="Model not loaded")
-
-    # Read and preprocess image
-    contents = await file.read()
+async def run_inference_internal(contents: bytes) -> Dict[str, Any]:
+    """Internal helper to run model inference and extract Grad-CAM peak locations."""
     try:
         image = Image.open(io.BytesIO(contents)).convert("RGB")
     except Exception:
@@ -154,24 +151,23 @@ async def predict(file: UploadFile = File(...)):
         DRIFT_MONITOR.log_prediction(pred_summary)
         DRIFT_MONITOR.save_log()
 
-    # Generate base64 Grad-CAM overlay for the highest probability pathology
+    # Find the convolutional target layer for Grad-CAM
+    timm_model = MODEL.backbone.model
+    if hasattr(timm_model, "layer4"):
+        target_layer = timm_model.layer4[-1]
+    elif hasattr(timm_model, "conv_head"):
+        target_layer = timm_model.conv_head
+    else:
+        target_layer = [m for m in timm_model.modules() if isinstance(m, torch.nn.Conv2d)][-1]
+
+    from src.explain.gradcam_eval import generate_gradcam
+    from pytorch_grad_cam.utils.image import show_cam_on_image
+
+    # Generate primary Grad-CAM for the highest probability pathology
     gradcam_b64 = None
     gradcam_ok = False
     try:
-        timm_model = MODEL.backbone.model
-        if hasattr(timm_model, "layer4"):
-            target_layer = timm_model.layer4[-1]
-        elif hasattr(timm_model, "conv_head"):
-            target_layer = timm_model.conv_head
-        else:
-            target_layer = [m for m in timm_model.modules() if isinstance(m, torch.nn.Conv2d)][-1]
-
-        from src.explain.gradcam_eval import generate_gradcam
-        from pytorch_grad_cam.utils.image import show_cam_on_image
-
-        # Target class: highest predicted pathology (or 0 if none)
         top_idx = int(np.argmax(mean_probs))
-        
         cam_heatmap = generate_gradcam(
             model=MODEL,
             images=img_tensor,
@@ -180,24 +176,106 @@ async def predict(file: UploadFile = File(...)):
             device=DEVICE
         )[0]  # (224, 224)
 
-        # Superimpose on unnormalized float32 image [0, 1]
         cam_overlay = show_cam_on_image(img_array, cam_heatmap, use_rgb=True)
-
         pil_overlay = Image.fromarray(cam_overlay)
         buffered = io.BytesIO()
         pil_overlay.save(buffered, format="PNG")
         gradcam_b64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
         gradcam_ok = True
     except Exception as e:
-        print(f"[app] Failed to generate Grad-CAM heatmap: {e}")
+        print(f"[app] Failed to generate primary Grad-CAM heatmap: {e}")
 
-    return PredictionResponse(
+    # Generate location quadrants for ALL positive findings via Grad-CAM peak activation
+    locations = {}
+    for p in predictions:
+        if p.positive and p.label != "No Finding":
+            try:
+                class_idx = LABEL_NAMES.index(p.label)
+                pathology_heatmap = generate_gradcam(
+                    model=MODEL,
+                    images=img_tensor,
+                    target_layer=target_layer,
+                    target_class=class_idx,
+                    device=DEVICE
+                )[0]
+                
+                # Pointing-game coordinate peaks:
+                max_idx = np.unravel_index(np.argmax(pathology_heatmap), pathology_heatmap.shape)
+                max_y, max_x = max_idx[0], max_idx[1]
+                
+                # Anatomical: left side of image is the patient's anatomical right hemisphere
+                laterality = "right" if max_x < 112 else "left"
+                verticality = "lower" if max_y >= 112 else "upper"
+                locations[p.label] = f"{laterality} {verticality} zone"
+                print(f"[app] Located positive finding '{p.label}' in the {locations[p.label]}")
+            except Exception as e:
+                print(f"[app] Failed to compute spatial quadrant for {p.label}: {e}")
+
+    pred_response = PredictionResponse(
         predictions=predictions,
         uncertainty=entropy,
         needs_human_review=needs_review,
         confidence_threshold=CONFIDENCE_THRESHOLD,
         gradcam_available=gradcam_ok,
         gradcam_image=gradcam_b64,
+    )
+    
+    return {
+        "pred_response": pred_response,
+        "locations": locations
+    }
+
+
+@app.post("/predict", response_model=PredictionResponse)
+async def predict(file: UploadFile = File(...)):
+    """Run diagnosis on an uploaded chest X-ray image with Grad-CAM and MC Dropout."""
+    if MODEL is None:
+        raise HTTPException(status_code=503, detail="Model not loaded")
+    contents = await file.read()
+    res = await run_inference_internal(contents)
+    return res["pred_response"]
+
+
+@app.post("/generate_report", response_model=ReportResponse)
+async def generate_report(
+    file: UploadFile = File(...),
+    age: Optional[str] = None,
+    gender: Optional[str] = None,
+    clinical_focus: Optional[str] = None
+):
+    """Generates a verified, clinically-grounded radiology report draft using the RadAgent state machine."""
+    if MODEL is None:
+        raise HTTPException(status_code=503, detail="Model not loaded")
+        
+    contents = await file.read()
+    # 1. Run classifier + localization heatmaps
+    res = await run_inference_internal(contents)
+    pred_response = res["pred_response"]
+    locations = res["locations"]
+    
+    # Construct demographics dict
+    demographics = None
+    if age is not None or gender is not None:
+        demographics = {"age": age, "gender": gender}
+        
+    # 2. Run agent pipeline
+    from radagent import run_radagent_pipeline
+    pipeline_res = run_radagent_pipeline(
+        pred_response, 
+        locations=locations, 
+        demographics=demographics,
+        clinical_focus=clinical_focus
+    )
+    
+    return ReportResponse(
+        prediction=pred_response,
+        report=pipeline_res["final_report"],
+        verification=pipeline_res["verification"],
+        grounding=pipeline_res["grounding"],
+        escalated=pipeline_res["escalated"],
+        trace_id=pipeline_res["trace_id"],
+        steps=pipeline_res["steps"],
+        bias=pipeline_res.get("bias")
     )
 
 

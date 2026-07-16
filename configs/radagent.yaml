@@ -1,0 +1,13 @@
+# RadAgent configuration file
+llm:
+  provider: "groq"  # Options: groq, gemini, anthropic, mock
+  model_name: "llama-3.3-70b-versatile"
+  temperature: 0.1
+  max_tokens: 1024
+  api_key: "YOUR_GROQ_API_KEY"
+
+agent:
+  discrepancy_threshold: 0  # Max allowed discrepancies before escalation
+  hedging:
+    min_prob: 0.5
+    max_prob: 0.65
