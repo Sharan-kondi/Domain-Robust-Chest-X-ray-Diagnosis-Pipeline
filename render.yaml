@@ -3,7 +3,7 @@ services:
     name: lumen-cxr
     runtime: docker
     plan: free
-    port: 8000
+    dockerfilePath: Dockerfile
     envVars:
       - key: GROQ_API_KEY
         sync: false
