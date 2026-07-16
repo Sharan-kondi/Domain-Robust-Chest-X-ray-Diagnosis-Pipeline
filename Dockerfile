@@ -7,10 +7,11 @@ ENV PORT=8000
 
 WORKDIR /app
 
-# Install system dependencies for OpenCV/PIL image processing
+# Install system dependencies for OpenCV/PIL image processing and C compiling
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PyTorch CPU-only first to keep image sizes small (saving ~1.2GB)
