@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: lumen-cxr
+    env: docker
+    plan: free
+    port: 8000
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false

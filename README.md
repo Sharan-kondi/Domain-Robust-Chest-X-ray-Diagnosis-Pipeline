@@ -1,5 +1,7 @@
 # ✦ Lumen CXR — Domain-Robust Chest X-ray Diagnostics & Multi-Agent Reporting
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Sharan-kondi/Domain-Robust-Chest-X-ray-Diagnosis-Pipeline)
+
 Welcome to **Lumen CXR**, an explainable, self-correcting clinical co-pilot designed to adapts chest X-ray diagnoses across hospital systems, audit findings using collaborative AI agents, and translate medical reports for doctors and patients alike.
 
 ---
