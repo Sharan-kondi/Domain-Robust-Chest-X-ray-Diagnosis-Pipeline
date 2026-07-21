@@ -1,0 +1,48 @@
+{
+  "agent_pipeline": {
+    "hallucination_rate": {
+      "point_estimate": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "std_error": 0.0,
+      "n_samples": 2
+    },
+    "omission_rate": {
+      "point_estimate": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "std_error": 0.0,
+      "n_samples": 2
+    },
+    "escalation_rate": {
+      "point_estimate": 0.5,
+      "ci_lower": 0.0,
+      "ci_upper": 1.0,
+      "std_error": 0.34504355530143593,
+      "n_samples": 2
+    },
+    "mean_discrepancy_count": {
+      "point_estimate": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "std_error": 0.0,
+      "n_samples": 2
+    },
+    "revision_correction_rate": {
+      "point_estimate": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "std_error": 0.0,
+      "n_samples": 1
+    }
+  },
+  "classification": {
+    "macro_auc": {
+      "point_estimate": 0.5656600438919033,
+      "ci_lower": 0.46888177507549195,
+      "ci_upper": 0.6683934870120082,
+      "std_error": 0.04913741815885256,
+      "n_samples": 8
+    }
+  }
+}

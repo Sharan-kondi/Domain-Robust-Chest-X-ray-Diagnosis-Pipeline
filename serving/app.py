@@ -421,6 +421,59 @@ async def get_metrics_report():
     }
 
 
+# ── Human-in-the-Loop Review Endpoint ────────────────────────────────────
+
+@app.post("/review_report")
+async def review_report(
+    trace_id: str = "",
+    action: str = "accept",  # accept | edit | reject
+    edited_report: Optional[str] = None,
+    reviewer_notes: Optional[str] = None,
+):
+    """Log a radiologist's review action (Accept/Edit/Reject) for a generated report.
+    
+    This enables the Human-in-the-Loop feedback loop, tracking correction patterns
+    for downstream analysis of agent error modes.
+    """
+    import datetime
+    
+    valid_actions = ["accept", "edit", "reject"]
+    if action not in valid_actions:
+        raise HTTPException(status_code=400, detail=f"Action must be one of: {valid_actions}")
+    
+    review_entry = {
+        "trace_id": trace_id,
+        "action": action,
+        "edited_report": edited_report if action == "edit" else None,
+        "reviewer_notes": reviewer_notes,
+        "timestamp": datetime.datetime.now().isoformat(),
+    }
+    
+    # Persist to human_feedback.json
+    feedback_path = Path("results/human_feedback.json")
+    feedback_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    existing = []
+    if feedback_path.exists():
+        try:
+            with open(feedback_path, "r") as f:
+                existing = json.load(f)
+        except Exception:
+            existing = []
+    
+    existing.append(review_entry)
+    
+    with open(feedback_path, "w") as f:
+        json.dump(existing, f, indent=2)
+    
+    return {
+        "status": "logged",
+        "action": action,
+        "trace_id": trace_id,
+        "total_reviews": len(existing),
+    }
+
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_ui():
     """Serve the interactive diagnosis UI."""

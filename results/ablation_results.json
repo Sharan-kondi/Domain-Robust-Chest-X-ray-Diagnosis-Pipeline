@@ -1,0 +1,420 @@
+{
+  "analysis": {
+    "monolithic_baseline": {
+      "n_cases": 5,
+      "hallucination_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "omission_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "escalation_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "mean_latency_seconds": {
+        "point_estimate": 0.5779619693756104,
+        "ci_lower": 0.5444266498088837,
+        "ci_upper": 0.6192227363586426,
+        "std_error": 0.019159165096848944,
+        "n_samples": 5
+      },
+      "mean_report_length_words": {
+        "point_estimate": 106.4,
+        "ci_lower": 82.8,
+        "ci_upper": 128.6,
+        "std_error": 12.099483123334313,
+        "n_samples": 5
+      }
+    },
+    "no_verification": {
+      "n_cases": 5,
+      "hallucination_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "omission_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "escalation_rate": {
+        "point_estimate": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "mean_latency_seconds": {
+        "point_estimate": 0.5584726810455323,
+        "ci_lower": 0.5486098289489746,
+        "ci_upper": 0.5668171310424804,
+        "std_error": 0.004872564436918935,
+        "n_samples": 5
+      },
+      "mean_report_length_words": {
+        "point_estimate": 106.4,
+        "ci_lower": 82.8,
+        "ci_upper": 128.6,
+        "std_error": 12.099483123334313,
+        "n_samples": 5
+      }
+    },
+    "no_rag": {
+      "n_cases": 5,
+      "hallucination_rate": {
+        "point_estimate": 0.2,
+        "ci_lower": 0.0,
+        "ci_upper": 0.6,
+        "std_error": 0.174295205954779,
+        "n_samples": 5
+      },
+      "omission_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "escalation_rate": {
+        "point_estimate": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "mean_latency_seconds": {
+        "point_estimate": 1.3053645610809326,
+        "ci_lower": 1.055010938644409,
+        "ci_upper": 1.730623197555542,
+        "std_error": 0.18356881982176734,
+        "n_samples": 5
+      },
+      "mean_report_length_words": {
+        "point_estimate": 101.2,
+        "ci_lower": 72.4,
+        "ci_upper": 127.2,
+        "std_error": 14.473495791979229,
+        "n_samples": 5
+      }
+    },
+    "full_pipeline": {
+      "n_cases": 5,
+      "hallucination_rate": {
+        "point_estimate": 0.2,
+        "ci_lower": 0.0,
+        "ci_upper": 0.6,
+        "std_error": 0.174295205954779,
+        "n_samples": 5
+      },
+      "omission_rate": {
+        "point_estimate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "std_error": 0.0,
+        "n_samples": 5
+      },
+      "escalation_rate": {
+        "point_estimate": 0.4,
+        "ci_lower": 0.0,
+        "ci_upper": 0.8,
+        "std_error": 0.21289143421651036,
+        "n_samples": 5
+      },
+      "mean_latency_seconds": {
+        "point_estimate": 1.2756635189056396,
+        "ci_lower": 1.0647962093353271,
+        "ci_upper": 1.6952144622802734,
+        "std_error": 0.1827679317469919,
+        "n_samples": 5
+      },
+      "mean_report_length_words": {
+        "point_estimate": 101.2,
+        "ci_lower": 72.4,
+        "ci_upper": 127.2,
+        "std_error": 14.473495791979229,
+        "n_samples": 5
+      }
+    }
+  },
+  "raw_results": {
+    "monolithic_baseline": [
+      {
+        "case_id": "ablation-000",
+        "variant": "monolithic_baseline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Atelectasis: Linear opacity is suggestive of subsegmental atelectasis.\n- Consolidation: Dense airspace consolidation in the right middle zone is noted.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Nodule/Mass: A circumscribed opacity in the right upper zone is noted.\n\nIMPRESSION:\n1. Subsegmental atelectasis.\n2. Airspace consolidation in the right middle zone.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 0.6495590209960938
+      },
+      {
+        "case_id": "ablation-001",
+        "variant": "monolithic_baseline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Airspace consolidation.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n3. Pneumothorax in the right apex.\n\nRECOMMENDATIONS:\n1. Follow-up chest radiography in 4-6 weeks or",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 0.5292792320251465
+      },
+      {
+        "case_id": "ablation-002",
+        "variant": "monolithic_baseline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n\nIMPRESSION:\n1. Pleural effusion in the left costophrenic angle.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n\nRECOMMENDATIONS:\n1. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural effusion [1].\n2. Clinical ",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 0.5992002487182617
+      },
+      {
+        "case_id": "ablation-003",
+        "variant": "monolithic_baseline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Airspace consolidation.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 0.5635349750518799
+      },
+      {
+        "case_id": "ablation-004",
+        "variant": "monolithic_baseline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Pleural effusion in the left costophrenic angle.\n\nRECOMMENDATIONS:\n1. Echocardiography is recommended to evaluate ventricular function [1].\n2. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural eff",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 0.5482363700866699
+      }
+    ],
+    "no_verification": [
+      {
+        "case_id": "ablation-000",
+        "variant": "no_verification",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Atelectasis: Linear opacity is suggestive of subsegmental atelectasis.\n- Consolidation: Dense airspace consolidation in the right middle zone is noted.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Nodule/Mass: A circumscribed opacity in the right upper zone is noted.\n\nIMPRESSION:\n1. Subsegmental atelectasis.\n2. Airspace consolidation in the right middle zone.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 0.5711362361907959
+      },
+      {
+        "case_id": "ablation-001",
+        "variant": "no_verification",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Airspace consolidation.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n3. Pneumothorax in the right apex.\n\nRECOMMENDATIONS:\n1. Follow-up chest radiography in 4-6 weeks or",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 0.5655741691589355
+      },
+      {
+        "case_id": "ablation-002",
+        "variant": "no_verification",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n\nIMPRESSION:\n1. Pleural effusion in the left costophrenic angle.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n\nRECOMMENDATIONS:\n1. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural effusion [1].\n2. Clinical ",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 0.556067943572998
+      },
+      {
+        "case_id": "ablation-003",
+        "variant": "no_verification",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Airspace consolidation.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 0.5606400966644287
+      },
+      {
+        "case_id": "ablation-004",
+        "variant": "no_verification",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Pleural effusion in the left costophrenic angle.\n\nRECOMMENDATIONS:\n1. Echocardiography is recommended to evaluate ventricular function [1].\n2. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural eff",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 0.5389449596405029
+      }
+    ],
+    "no_rag": [
+      {
+        "case_id": "ablation-000",
+        "variant": "no_rag",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Atelectasis: Linear opacity is suggestive of subsegmental atelectasis.\n- Consolidation: Dense airspace consolidation in the right middle zone is noted.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Nodule/Mass: A circumscribed opacity in the right upper zone is noted.\n\nIMPRESSION:\n1. Subsegmental atelectasis.\n2. Airspace consolidation in the right middle zone.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 1.1027424335479736
+      },
+      {
+        "case_id": "ablation-001",
+        "variant": "no_rag",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Airspace consolidation.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n3. Pneumothorax in the right apex.\n\nRECOMMENDATIONS:\n1. Follow-up chest radiography in 4-6 weeks or",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 1.199857473373413
+      },
+      {
+        "case_id": "ablation-002",
+        "variant": "no_rag",
+        "final_report": "{\n  \"hallucinations\": [\n    {\n      \"claim\": \"Asserted presence of consolidation\",\n      \"explanation\": \"Draft asserts consolidation but it is not in the positive/uncertain findings.\"\n    }\n  ],\n  \"omissions\": [\n    {\n      \"finding\": \"Effusion\",\n      \"explanation\": \"Positive finding effusion was not mentioned in the draft report.\"\n    },\n    {\n      \"finding\": \"Pneumonia\",\n      \"explanation\": \"Positive finding pneumonia was not mentioned in the draft report.\"\n    }\n  ],\n  \"discrepancy_count\":",
+        "verification": {
+          "hallucinations": [
+            {
+              "claim": "Asserted presence of consolidation",
+              "explanation": "Draft asserts consolidation but it is not in the positive/uncertain findings."
+            }
+          ],
+          "omissions": [],
+          "discrepancy_count": 1
+        },
+        "escalated": true,
+        "latency_seconds": 2.1380667686462402
+      },
+      {
+        "case_id": "ablation-003",
+        "variant": "no_rag",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Airspace consolidation.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 1.0390582084655762
+      },
+      {
+        "case_id": "ablation-004",
+        "variant": "no_rag",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Pleural effusion in the left costophrenic angle.\n\nRECOMMENDATIONS:\n1. Echocardiography is recommended to evaluate ventricular function [1].\n2. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural eff",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 1.04709792137146
+      }
+    ],
+    "full_pipeline": [
+      {
+        "case_id": "ablation-000",
+        "variant": "full_pipeline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Atelectasis: Linear opacity is suggestive of subsegmental atelectasis.\n- Consolidation: Dense airspace consolidation in the right middle zone is noted.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Nodule/Mass: A circumscribed opacity in the right upper zone is noted.\n\nIMPRESSION:\n1. Subsegmental atelectasis.\n2. Airspace consolidation in the right middle zone.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 1.0655736923217773
+      },
+      {
+        "case_id": "ablation-001",
+        "variant": "full_pipeline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Airspace consolidation.\n2. Infectious consolidation suggestive of pneumonia in the right lower zone.\n3. Pneumothorax in the right apex.\n\nRECOMMENDATIONS:\n1. Follow-up chest radiography in 4-6 weeks or",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 1.0690193176269531
+      },
+      {
+        "case_id": "ablation-002",
+        "variant": "full_pipeline",
+        "final_report": "{\n  \"hallucinations\": [\n    {\n      \"claim\": \"Asserted presence of consolidation\",\n      \"explanation\": \"Draft asserts consolidation but it is not in the positive/uncertain findings.\"\n    }\n  ],\n  \"omissions\": [\n    {\n      \"finding\": \"Effusion\",\n      \"explanation\": \"Positive finding effusion was not mentioned in the draft report.\"\n    },\n    {\n      \"finding\": \"Pneumonia\",\n      \"explanation\": \"Positive finding pneumonia was not mentioned in the draft report.\"\n    }\n  ],\n  \"discrepancy_count\":",
+        "verification": {
+          "hallucinations": [
+            {
+              "claim": "Asserted presence of consolidation",
+              "explanation": "Draft asserts consolidation but it is not in the positive/uncertain findings."
+            }
+          ],
+          "omissions": [],
+          "discrepancy_count": 1
+        },
+        "escalated": true,
+        "latency_seconds": 2.1144859790802
+      },
+      {
+        "case_id": "ablation-003",
+        "variant": "full_pipeline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Consolidation: Dense airspace consolidation is suggestive of.\n- Pneumonia: Focal airspace opacity in the right lower zone is noted infectious process.\n- Pneumothorax: A visceral pleural line in the right apex without peripheral lung markings is noted.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Airspace consolidation.\n3. Infectious consolidation suggestive of pneumonia in the r",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": true,
+        "latency_seconds": 1.0635950565338135
+      },
+      {
+        "case_id": "ablation-004",
+        "variant": "full_pipeline",
+        "final_report": "CHEST X-RAY REPORT\n\nFINDINGS:\n- Cardiomegaly: Enlargement of the cardiac silhouette is identified.\n- Pleural Effusion: Blunting of the costophrenic angle is noted in the left costophrenic angle.\n\nIMPRESSION:\n1. Enlarged cardiac silhouette (cardiomegaly).\n2. Pleural effusion in the left costophrenic angle.\n\nRECOMMENDATIONS:\n1. Echocardiography is recommended to evaluate ventricular function [1].\n2. Clinical correlation and contrast chest CT or ultrasound is recommended to evaluate the pleural eff",
+        "verification": {
+          "hallucinations": [],
+          "omissions": [],
+          "discrepancy_count": 0
+        },
+        "escalated": false,
+        "latency_seconds": 1.065643548965454
+      }
+    ]
+  },
+  "config": {
+    "num_cases": 5,
+    "n_bootstrap": 1000
+  }
+}

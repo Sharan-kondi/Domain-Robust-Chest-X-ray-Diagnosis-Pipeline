@@ -1,0 +1,326 @@
+{
+  "gender": {
+    "subgroups": {
+      "Male": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "50",
+          "gender": "Male"
+        }
+      },
+      "Female": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "50",
+          "gender": "Female"
+        }
+      }
+    },
+    "disparities": {
+      "hallucination_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "Male",
+        "best_subgroup": "Male",
+        "disparity_significant": false
+      },
+      "omission_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "Male",
+        "best_subgroup": "Male",
+        "disparity_significant": false
+      },
+      "escalation_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "Male",
+        "best_subgroup": "Male",
+        "disparity_significant": false
+      }
+    }
+  },
+  "age_group": {
+    "subgroups": {
+      "18-29": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "25",
+          "gender": "Male"
+        }
+      },
+      "30-49": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "40",
+          "gender": "Female"
+        }
+      },
+      "50-69": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "60",
+          "gender": "Male"
+        }
+      },
+      "70+": {
+        "metrics": {
+          "n_cases": 6,
+          "hallucination_rate": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "omission_rate": {
+            "point_estimate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "escalation_rate": {
+            "point_estimate": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "std_error": 0.0,
+            "n_samples": 6
+          },
+          "mean_discrepancies": {
+            "point_estimate": 1.3333333333333333,
+            "ci_lower": 0.5,
+            "ci_upper": 2.3333333333333335,
+            "std_error": 0.4911309948461235,
+            "n_samples": 6
+          },
+          "mean_report_length": {
+            "point_estimate": 112.33333333333333,
+            "ci_lower": 70.0,
+            "ci_upper": 156.0,
+            "std_error": 23.330780059549575,
+            "n_samples": 6
+          }
+        },
+        "demographics": {
+          "age": "78",
+          "gender": "Female"
+        }
+      }
+    },
+    "disparities": {
+      "hallucination_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "18-29",
+        "best_subgroup": "18-29",
+        "disparity_significant": false
+      },
+      "omission_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "18-29",
+        "best_subgroup": "18-29",
+        "disparity_significant": false
+      },
+      "escalation_rate": {
+        "max_min_gap": 0.0,
+        "coefficient_of_variation": 0.0,
+        "worst_subgroup": "18-29",
+        "best_subgroup": "18-29",
+        "disparity_significant": false
+      }
+    }
+  },
+  "overall_summary": {
+    "total_dimensions_tested": 2,
+    "significant_disparities": 0,
+    "disparity_details": [],
+    "fairness_passed": true
+  }
+}

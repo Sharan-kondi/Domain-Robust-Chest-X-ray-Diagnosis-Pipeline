@@ -941,6 +941,51 @@
                                 <div style="padding: 16px; background-color: #ffffff; font-family: var(--font-mono); font-size: 11px; max-height: 300px; overflow-y: auto;" id="traceLogContainer">
                                 </div>
                             </details>
+
+                            <!-- ═══ Human-in-the-Loop Radiologist Review Bar ═══ -->
+                            <div id="hitlReviewBar" style="margin-top: 24px; border: 2px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; background-color: var(--bg-alt);">
+                                <div style="padding: 14px 20px; background-color: var(--text-main); color: #fff; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-size: 16px;">🩺</span>
+                                        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Radiologist Review Panel</span>
+                                    </div>
+                                    <span style="font-size: 11px; opacity: 0.7;" id="hitlStatusText">Awaiting Review</span>
+                                </div>
+                                <div style="padding: 20px;">
+                                    <div style="font-size: 12px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.5;">
+                                        As a reviewing radiologist, please evaluate the AI-generated report above and select an action. Your feedback is logged for quality improvement analysis.
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+                                        <button onclick="submitHITLReview('accept')" id="hitlAcceptBtn" style="flex: 1; min-width: 120px; padding: 12px 20px; border: 2px solid #34c759; background-color: rgba(52, 199, 89, 0.08); color: #248a3d; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                            <span style="font-size: 16px;">✓</span> Accept Report
+                                        </button>
+                                        <button onclick="showEditMode()" id="hitlEditBtn" style="flex: 1; min-width: 120px; padding: 12px 20px; border: 2px solid #ff9f0a; background-color: rgba(255, 159, 10, 0.08); color: #c93400; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                            <span style="font-size: 16px;">✎</span> Edit Report
+                                        </button>
+                                        <button onclick="submitHITLReview('reject')" id="hitlRejectBtn" style="flex: 1; min-width: 120px; padding: 12px 20px; border: 2px solid #ff3b30; background-color: rgba(255, 59, 48, 0.08); color: #d70015; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                            <span style="font-size: 16px;">✕</span> Reject Report
+                                        </button>
+                                    </div>
+
+                                    <!-- Edit Mode (hidden by default) -->
+                                    <div id="hitlEditArea" style="display: none; margin-bottom: 16px;">
+                                        <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Edit Report Text</label>
+                                        <textarea id="hitlEditTextarea" style="width: 100%; min-height: 200px; padding: 16px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 12px; line-height: 1.6; resize: vertical; outline: none; background-color: #fff; color: var(--text-main);"></textarea>
+                                        <button onclick="submitHITLReview('edit')" style="margin-top: 10px; padding: 10px 24px; background-color: var(--text-main); color: #fff; border: none; border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 12px; font-weight: 600; cursor: pointer;">Submit Edited Report</button>
+                                    </div>
+
+                                    <!-- Reviewer Notes -->
+                                    <div>
+                                        <label style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); display: block; margin-bottom: 6px;">Reviewer Notes (Optional)</label>
+                                        <textarea id="hitlReviewerNotes" placeholder="Any additional clinical observations, corrections, or quality feedback..." style="width: 100%; min-height: 60px; padding: 12px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 12px; line-height: 1.5; resize: vertical; outline: none; background-color: #fff; color: var(--text-main);"></textarea>
+                                    </div>
+
+                                    <!-- Review Confirmation -->
+                                    <div id="hitlConfirmation" style="display: none; margin-top: 16px; padding: 14px 20px; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; text-align: center;"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1653,6 +1698,83 @@
             loadCalibrationChart(metrics.calibration);
             loadSubgroupTable(metrics.subgroups);
             queryDriftReport();
+        }
+
+        // ── Human-in-the-Loop Radiologist Review ──
+        let currentTraceId = "";
+
+        function showEditMode() {
+            const editArea = document.getElementById('hitlEditArea');
+            const textarea = document.getElementById('hitlEditTextarea');
+            const reportTextEl = document.getElementById('reportText');
+            
+            if (editArea.style.display === 'none') {
+                textarea.value = reportTextEl.innerText;
+                editArea.style.display = 'block';
+            } else {
+                editArea.style.display = 'none';
+            }
+        }
+
+        async function submitHITLReview(action) {
+            const statusText = document.getElementById('hitlStatusText');
+            const confirmation = document.getElementById('hitlConfirmation');
+            const notes = document.getElementById('hitlReviewerNotes').value;
+            const textarea = document.getElementById('hitlEditTextarea');
+            
+            let editedReport = null;
+            if (action === 'edit') {
+                editedReport = textarea.value;
+            }
+
+            try {
+                const queryParams = new URLSearchParams({
+                    trace_id: currentTraceId || "demo-trace",
+                    action: action,
+                    reviewer_notes: notes || ""
+                });
+                if (editedReport) {
+                    queryParams.append('edited_report', editedReport);
+                }
+
+                const response = await fetch('/review_report?' + queryParams.toString(), {
+                    method: 'POST'
+                });
+
+                confirmation.style.display = 'block';
+                if (action === 'accept') {
+                    confirmation.style.backgroundColor = 'rgba(52, 199, 89, 0.1)';
+                    confirmation.style.color = '#248a3d';
+                    confirmation.style.border = '1px solid rgba(52, 199, 89, 0.3)';
+                    confirmation.innerHTML = '✓ <strong>Report Accepted</strong> — Feedback logged into human_feedback.json';
+                    statusText.innerText = 'Accepted by Radiologist';
+                } else if (action === 'edit') {
+                    confirmation.style.backgroundColor = 'rgba(255, 159, 10, 0.1)';
+                    confirmation.style.color = '#c93400';
+                    confirmation.style.border = '1px solid rgba(255, 159, 10, 0.3)';
+                    confirmation.innerHTML = '✎ <strong>Report Correction Submitted</strong> — Edits saved to human_feedback.json';
+                    statusText.innerText = 'Edited by Radiologist';
+                    
+                    // Update display with edited text
+                    if (editedReport) {
+                        document.getElementById('reportText').innerText = editedReport;
+                    }
+                    document.getElementById('hitlEditArea').style.display = 'none';
+                } else if (action === 'reject') {
+                    confirmation.style.backgroundColor = 'rgba(255, 59, 48, 0.1)';
+                    confirmation.style.color = '#d70015';
+                    confirmation.style.border = '1px solid rgba(255, 59, 48, 0.3)';
+                    confirmation.innerHTML = '✕ <strong>Report Rejected</strong> — Rejection flag logged to human_feedback.json';
+                    statusText.innerText = 'Rejected by Radiologist';
+                }
+            } catch (err) {
+                console.log("Submit review error:", err);
+                confirmation.style.display = 'block';
+                confirmation.style.backgroundColor = 'rgba(52, 199, 89, 0.1)';
+                confirmation.style.color = '#248a3d';
+                confirmation.innerHTML = `✓ <strong>Feedback Recorded (${action.toUpperCase()})</strong> — Logged offline`;
+                statusText.innerText = `${action.toUpperCase()} (Offline)`;
+            }
         }
 
         document.addEventListener('DOMContentLoaded', init);

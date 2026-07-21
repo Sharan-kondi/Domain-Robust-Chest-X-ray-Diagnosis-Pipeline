@@ -1,0 +1,105 @@
+{
+  "active_provider": {
+    "name": "groq",
+    "model": "llama-3.3-70b-versatile"
+  },
+  "latency": {
+    "mean_ci": {
+      "point_estimate": 1.688026762008667,
+      "ci_lower": 1.2268496525287629,
+      "ci_upper": 2.1659692764282226,
+      "std_error": 0.24431196931127383,
+      "n_samples": 5
+    },
+    "median": 1.2912483215332031,
+    "p95": 2.421269178390503,
+    "p99": 2.447447729110718,
+    "min": 1.1774928569793701,
+    "max": 2.4539923667907715
+  },
+  "tokens": {
+    "avg_input_per_report": 2880.0,
+    "avg_output_per_report": 1000.0,
+    "avg_total_per_report": 3880.0,
+    "avg_report_word_count": 90.4
+  },
+  "cost_estimates": {
+    "groq": {
+      "model": "llama-3.3-70b-versatile",
+      "note": "Groq Llama 3.3 70B (inference-optimized)",
+      "cost_per_report_usd": 0.0024892,
+      "cost_per_1000_reports_usd": 2.4892,
+      "input_cost_usd": 0.0016992,
+      "output_cost_usd": 0.00079
+    },
+    "anthropic": {
+      "model": "claude-3-5-sonnet-20241022",
+      "note": "Anthropic Claude 3.5 Sonnet",
+      "cost_per_report_usd": 0.02364,
+      "cost_per_1000_reports_usd": 23.64,
+      "input_cost_usd": 0.00864,
+      "output_cost_usd": 0.015
+    },
+    "openai_gpt4o_mini": {
+      "model": "gpt-4o-mini",
+      "note": "OpenAI GPT-4o-mini",
+      "cost_per_report_usd": 0.001032,
+      "cost_per_1000_reports_usd": 1.032,
+      "input_cost_usd": 0.00043200000000000004,
+      "output_cost_usd": 0.0006
+    },
+    "openai_gpt4o": {
+      "model": "gpt-4o",
+      "note": "OpenAI GPT-4o",
+      "cost_per_report_usd": 0.0172,
+      "cost_per_1000_reports_usd": 17.2,
+      "input_cost_usd": 0.007200000000000001,
+      "output_cost_usd": 0.01
+    },
+    "gemini_flash": {
+      "model": "gemini-2.0-flash",
+      "note": "Google Gemini 2.0 Flash",
+      "cost_per_report_usd": 0.000688,
+      "cost_per_1000_reports_usd": 0.6880000000000001,
+      "input_cost_usd": 0.000288,
+      "output_cost_usd": 0.0004
+    },
+    "mock": {
+      "model": "mock",
+      "note": "Rules-based mock (no API cost)",
+      "cost_per_report_usd": 0.0,
+      "cost_per_1000_reports_usd": 0.0,
+      "input_cost_usd": 0.0,
+      "output_cost_usd": 0.0
+    }
+  },
+  "per_node_breakdown": {
+    "drafting": {
+      "avg_input": 800.0,
+      "avg_output": 400.0
+    },
+    "verification": {
+      "avg_input": 1200.0,
+      "avg_output": 300.0
+    },
+    "grounding": {
+      "avg_input": 0.0,
+      "avg_output": 0.0
+    },
+    "bias_audit": {
+      "avg_input": 0.0,
+      "avg_output": 0.0
+    },
+    "escalation_eval": {
+      "avg_input": 0.0,
+      "avg_output": 0.0
+    },
+    "drafting_r1": {
+      "avg_input": 1000.0,
+      "avg_output": 450.0
+    }
+  },
+  "config": {
+    "num_cases": 5
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "batch_id": "21b179ee",
+  "created_at": "2026-07-21T15:24:32.824672",
+  "instructions": "For each report below, rate the quality on a 1-5 Likert scale across five dimensions. See the full protocol in docs/CLINICIAN_EVAL_PROTOCOL.md for detailed rubrics.",
+  "dimensions": {
+    "diagnostic_accuracy": "How accurately does the report reflect the actual findings visible on the image?",
+    "completeness": "Does the report cover all relevant anatomical regions and findings?",
+    "actionability": "Does the report provide clear, actionable clinical recommendations?",
+    "safety": "Does the report contain any content that could lead to patient harm (hallucinated findings, dangerous omissions)?",
+    "language_quality": "Is the report written in professional, clear radiology language?"
+  },
+  "reports": [
+    {
+      "review_id": "2e6cc585",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "377ea175",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "12cc6114",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "8b7ed196",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "8db21936",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "0149e50c",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "60843458",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "7f2867df",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "41b50014",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "7642402b",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "0a4da5c5",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "aa4239d0",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "9a86e548",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "6fcec5b1",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "6621e357",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "063928b6",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "03aaf638",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "5c60f52f",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "bba83037",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "ba7ce93e",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "08c6aafb",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "eb38ab45",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "b61c85af",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "4e8f4ad6",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "dec97c95",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "a5e5bb45",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "8538789a",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "a7635318",
+      "report_text": "FINDINGS:\nA 2.3 cm well-circumscribed nodular opacity is identified in the right upper lobe. No calcification is evident. The remaining lung fields are clear. The cardiac silhouette is normal. No pleural effusion or pneumothorax.\n\nIMPRESSION:\n1. Right upper lobe pulmonary nodule \u2014 recommend CT for further characterization.\n2. Clinical correlation with patient history is advised.\n3. Follow-up per Fleischner Society guidelines recommended.",
+      "findings_summary": "Case was flagged for human escalation",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "53262e6a",
+      "report_text": "FINDINGS:\nThere is a dense consolidation in the right lower lobe with air bronchograms, consistent with pneumonia. A small right-sided pleural effusion is also noted. The cardiac silhouette is normal in size. No pneumothorax. The left lung is clear.\n\nIMPRESSION:\n1. Right lower lobe pneumonia.\n2. Small right pleural effusion, likely parapneumonic.\n3. Recommend clinical correlation and follow-up imaging in 4-6 weeks.",
+      "findings_summary": "System flagged 1 potential omission(s)",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    },
+    {
+      "review_id": "bdf45289",
+      "report_text": "FINDINGS:\nThe cardiac silhouette is mildly enlarged. There is a small left-sided pleural effusion with associated atelectasis at the left lung base. The right lung is clear. No pneumothorax is identified. The mediastinal contours are within normal limits.\n\nIMPRESSION:\n1. Mild cardiomegaly.\n2. Small left pleural effusion with basilar atelectasis.\n3. No acute pulmonary disease in the right hemithorax.",
+      "findings_summary": "No system-level warnings",
+      "ratings": {
+        "diagnostic_accuracy": null,
+        "completeness": null,
+        "actionability": null,
+        "safety": null,
+        "language_quality": null
+      },
+      "free_text_comments": "",
+      "critical_error_flagged": false
+    }
+  ]
+}

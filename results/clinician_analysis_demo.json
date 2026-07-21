@@ -1,0 +1,99 @@
+{
+  "batch_id": "21b179ee",
+  "n_reports_reviewed": 30,
+  "critical_errors_flagged": 0,
+  "dimension_analysis": {
+    "diagnostic_accuracy": {
+      "mean_score": {
+        "point_estimate": 4.166666666666667,
+        "ci_lower": 3.933333333333333,
+        "ci_upper": 4.400833333333333,
+        "std_error": 0.12148592486807747,
+        "n_samples": 30
+      },
+      "acceptable_rate": 0.8333333333333334,
+      "score_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 5,
+        "4": 15,
+        "5": 10
+      }
+    },
+    "completeness": {
+      "mean_score": {
+        "point_estimate": 4.133333333333334,
+        "ci_lower": 3.9,
+        "ci_upper": 4.366666666666666,
+        "std_error": 0.11703518707119911,
+        "n_samples": 30
+      },
+      "acceptable_rate": 0.8666666666666667,
+      "score_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 4,
+        "4": 18,
+        "5": 8
+      }
+    },
+    "actionability": {
+      "mean_score": {
+        "point_estimate": 4.2,
+        "ci_lower": 3.933333333333333,
+        "ci_upper": 4.466666666666667,
+        "std_error": 0.12635912650486825,
+        "n_samples": 30
+      },
+      "acceptable_rate": 0.8333333333333334,
+      "score_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 5,
+        "4": 14,
+        "5": 11
+      }
+    },
+    "safety": {
+      "mean_score": {
+        "point_estimate": 4.133333333333334,
+        "ci_lower": 3.9,
+        "ci_upper": 4.366666666666666,
+        "std_error": 0.12391548886928967,
+        "n_samples": 30
+      },
+      "acceptable_rate": 0.8333333333333334,
+      "score_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 5,
+        "4": 16,
+        "5": 9
+      }
+    },
+    "language_quality": {
+      "mean_score": {
+        "point_estimate": 4.233333333333333,
+        "ci_lower": 3.9991666666666674,
+        "ci_upper": 4.466666666666667,
+        "std_error": 0.12308081355126888,
+        "n_samples": 30
+      },
+      "acceptable_rate": 0.8666666666666667,
+      "score_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 4,
+        "4": 15,
+        "5": 11
+      }
+    }
+  },
+  "overall_composite": {
+    "point_estimate": 4.173333333333333,
+    "ci_lower": 4.0665,
+    "ci_upper": 4.28,
+    "std_error": 0.05572263604427987,
+    "n_samples": 150
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "scanner_self_test": {
+    "total_categories": 13,
+    "categories_tested": 13,
+    "true_positives": 16,
+    "false_negatives": 1,
+    "details": [
+      {
+        "category": "names",
+        "test_string": "Patient: John Smith",
+        "detected": false
+      },
+      {
+        "category": "names",
+        "test_string": "Mr. Johnson presented with",
+        "detected": true
+      },
+      {
+        "category": "names",
+        "test_string": "Patient name: Jane Doe",
+        "detected": true
+      },
+      {
+        "category": "dates",
+        "test_string": "DOB: 03/15/1985",
+        "detected": true
+      },
+      {
+        "category": "dates",
+        "test_string": "Admitted January 5, 2024",
+        "detected": true
+      },
+      {
+        "category": "phone_numbers",
+        "test_string": "Phone: (555) 123-4567",
+        "detected": true
+      },
+      {
+        "category": "email_addresses",
+        "test_string": "Email: patient@hospital.com",
+        "detected": true
+      },
+      {
+        "category": "ssn",
+        "test_string": "SSN: 123-45-6789",
+        "detected": true
+      },
+      {
+        "category": "mrn",
+        "test_string": "MRN: 12345678",
+        "detected": true
+      },
+      {
+        "category": "mrn",
+        "test_string": "Medical record number: A-123456",
+        "detected": true
+      },
+      {
+        "category": "geographic",
+        "test_string": "Address: 123 Main Street",
+        "detected": true
+      },
+      {
+        "category": "account_numbers",
+        "test_string": "Account #: 987654321",
+        "detected": true
+      },
+      {
+        "category": "device_ids",
+        "test_string": "Device ID: XR-2024-001",
+        "detected": true
+      },
+      {
+        "category": "ip_addresses",
+        "test_string": "Server: 192.168.1.100",
+        "detected": true
+      },
+      {
+        "category": "urls",
+        "test_string": "Portal: https://patient.hospital.com/records",
+        "detected": true
+      },
+      {
+        "category": "biometric_ids",
+        "test_string": "Biometric ID: BIO-44521",
+        "detected": true
+      },
+      {
+        "category": "photos",
+        "test_string": "Photo: patient_face_001.jpg",
+        "detected": true
+      }
+    ],
+    "detection_rate": 0.9411764705882353
+  },
+  "pipeline_audit": {
+    "total_cases_scanned": 10,
+    "cases_with_phi_leakage": 0,
+    "total_phi_findings": 0,
+    "phi_leakage_rate": 0.0,
+    "findings_by_category": {},
+    "all_findings": []
+  },
+  "static_scan": {
+    "files_scanned": 10,
+    "total_findings": 18,
+    "findings_by_file": {
+      "results\\phi_audit_results.json": 18
+    }
+  },
+  "overall_compliance": {
+    "hipaa_safe_harbor_compliant": false,
+    "total_phi_issues": 18,
+    "scanner_accuracy": 0.9411764705882353,
+    "audit_timestamp": "2026-07-21T15:21:33.156461"
+  }
+}
