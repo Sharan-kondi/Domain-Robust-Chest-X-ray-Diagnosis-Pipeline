@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lumen-cxr-deployment
+  namespace: lumen-cxr
+  labels:
+    app.kubernetes.io/name: lumen-cxr
+    app.kubernetes.io/component: inference-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lumen-cxr
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: lumen-cxr
+        app.kubernetes.io/name: lumen-cxr
+    spec:
+      containers:
+        - name: lumen-cxr-container
+          image: ghcr.io/sharan-kondi/lumen-cxr:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: lumen-cxr-config
+          env:
+            - name: GROQ_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: lumen-cxr-secret
+                  key: GROQ_API_KEY
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 2
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+            capabilities:
+              drop:
+                - ALL

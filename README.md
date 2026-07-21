@@ -178,9 +178,38 @@ pytest tests/test_radagent.py
 
 ## 🐳 Docker & Cloud Deployment
 
-Build and run locally:
+Build and run locally with Docker Compose:
 ```bash
 docker compose up --build
 ```
 
 Configured with `render.yaml` for 1-click container deployment on Render's free tier.
+
+---
+
+## ☸️ Enterprise Kubernetes Orchestration
+
+Production-grade Kubernetes manifests are provided in `k8s/` featuring a rolling-update Deployment, Horizontal Pod Autoscaler (HPA), Health Probes, and NGINX Ingress Controller.
+
+### 1-Command Kubernetes Deployment (Kustomize)
+
+```bash
+# 1. Apply all manifests via Kustomize (Namespace, Secret, ConfigMap, Deployment, Service, HPA, Ingress)
+kubectl apply -k k8s/
+
+# 2. Check deployment status
+kubectl get pods -n lumen-cxr
+kubectl get hpa -n lumen-cxr
+
+# 3. View service endpoint
+kubectl get svc -n lumen-cxr
+```
+
+| Kubernetes Manifest | Resource Type | Description |
+|:---|:---|:---|
+| [`k8s/deployment.yaml`](file:///c:/Users/Shara/OneDrive/Desktop/projects/Domain-Robust%20Chest%20X-ray%20Diagnosis%20Pipeline/k8s/deployment.yaml) | Deployment | 3-replica rolling deployment with liveness/readiness probes (`/health`) and resource bounds. |
+| [`k8s/hpa.yaml`](file:///c:/Users/Shara/OneDrive/Desktop/projects/Domain-Robust%20Chest%20X-ray%20Diagnosis%20Pipeline/k8s/hpa.yaml) | HPA | Autoscales dynamically between 2 to 10 pods based on 70% target CPU utilization. |
+| [`k8s/service.yaml`](file:///c:/Users/Shara/OneDrive/Desktop/projects/Domain-Robust%20Chest%20X-ray%20Diagnosis%20Pipeline/k8s/service.yaml) | Service | Dual `ClusterIP` & `LoadBalancer` load balancer on port 80/8000. |
+| [`k8s/ingress.yaml`](file:///c:/Users/Shara/OneDrive/Desktop/projects/Domain-Robust%20Chest%20X-ray%20Diagnosis%20Pipeline/k8s/ingress.yaml) | Ingress | NGINX ingress with TLS certificate termination and 25MB body payload support. |
+| [`k8s/kustomization.yaml`](file:///c:/Users/Shara/OneDrive/Desktop/projects/Domain-Robust%20Chest%20X-ray%20Diagnosis%20Pipeline/k8s/kustomization.yaml) | Kustomize | Bundles all 7 manifests into a single 1-command deployment. |
+

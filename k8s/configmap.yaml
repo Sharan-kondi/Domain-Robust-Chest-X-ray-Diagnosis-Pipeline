@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lumen-cxr-config
+  namespace: lumen-cxr
+  labels:
+    app.kubernetes.io/name: lumen-cxr
+data:
+  PORT: "8000"
+  HOST: "0.0.0.0"
+  ENVIRONMENT: "production"
+  LLM_PROVIDER: "groq"
+  LLM_MODEL: "llama-3.3-70b-versatile"
+  PYTHONUNBUFFERED: "1"

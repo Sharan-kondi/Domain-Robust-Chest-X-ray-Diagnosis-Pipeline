@@ -184,8 +184,9 @@ Key initial validation findings from expert review ($N=30$ sample batch):
 ## 8. Discussion & Limitations
 
 1. **Classification AUC Baseline**: The current vision backbone trained on CPU reaches a baseline AUC of 0.585. Transferring training to a GPU instance with a larger backbone (e.g. ResNet50 or Swin Transformer) and full 100K NIH dataset will yield macro AUC $>0.82$.
-2. **Deterministic Fallback**: In offline or quota-exceeded settings, the system gracefully falls back to a rules-based deterministic generator without crashing.
-3. **Clinical Scope**: The system currently targets 8 primary thoracic pathologies and is intended as a triage co-pilot rather than a standalone diagnostic replacement.
+2. **Cloud-Native Kubernetes Orchestration**: Production deployment is packaged with Kubernetes manifests (`k8s/`), supporting Horizontal Pod Autoscaling (HPA) from 2 to 10 pods, rolling updates, and NGINX Ingress SSL termination for high-availability hospital IT infrastructure.
+3. **Deterministic Fallback**: In offline or quota-exceeded settings, the system gracefully falls back to a rules-based deterministic generator without crashing.
+4. **Clinical Scope**: The system currently targets 8 primary thoracic pathologies and is intended as a triage co-pilot rather than a standalone diagnostic replacement.
 
 ---
 
