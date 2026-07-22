@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: lumen-cxr-container
-          image: ghcr.io/sharan-kondi/lumen-cxr:latest
+          image: lumen-cxr:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
